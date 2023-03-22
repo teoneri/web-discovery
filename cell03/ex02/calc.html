@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>calc</title>
+</head>
+<style>
+	.center{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	flex-direction: column;
+}
+	.num{
+		display: flex;
+		align-items:center;
+		height: 10px;
+		justify-content: center;
+	}
+</style>
+<script>
+	function calculator(){
+		var firstNum = document.getElementById('firstNum').value;
+		var secondNum = document.getElementById('secondNum').value;
+		var select = document.getElementById('select');
+		if(parseInt(firstNum) < 0 || parseInt(secondNum) < 0){
+			window.alert("error");
+		}
+		else if((select.value == '%' && secondNum == 0) || (select.value == '/' && secondNum == 0))
+		{
+			console.log("It's over 9000");
+		}
+		else if(select.value == '/')
+		{
+		console.log(parseInt(firstNum) / parseInt(secondNum));
+		}
+		else if(select.value == '%'){
+		console.log(parseInt(firstNum) % parseInt(secondNum));
+		}
+		else if(select.value == '*'){
+		console.log(parseInt(firstNum) * parseInt(secondNum));
+		}
+		else if(select.value == '+'){
+		console.log(parseInt(firstNum) + parseInt(secondNum));
+		} 
+		else if(select.value == '-'){
+		console.log(parseInt(firstNum) - parseInt(secondNum));
+		}
+	}
+</script>
+<body style="background-color: aqua;">
+	<div class="center">
+		<textarea id="firstNum" class="num"></textarea>
+		<select id="select">
+			<option value="-">-</option>
+			<option value="+">+</option>
+			<option value="/">/</option>
+			<option value="%">%</option>
+		</select>
+		<textarea id="secondNum" class="num"></textarea>
+		<button onclick="calculator()">Try me!</button>
+	</div>
+</body>
+</html>

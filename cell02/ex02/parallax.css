@@ -1,0 +1,38 @@
+body, html {
+	height: 100%;
+  }
+
+.parallax{
+	background-image:url("/nfs/homes/mneri/Downloads/naboo.jpg");
+	min-height: 100%;
+	min-width: 100%;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+
+.parallax2{
+	background-image:url("/nfs/homes/mneri/Downloads/nabood.jpg");
+	min-height: 100%;
+	min-width: 100%;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+
+.bar{
+	height: 100px;
+	width: 100%;
+	background-color: black;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}

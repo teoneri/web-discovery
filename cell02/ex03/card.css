@@ -1,0 +1,58 @@
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+  }
+
+.name{
+	text-align: center;
+	position: relative;
+	color: aliceblue;
+	font-weight: bold;
+	font-size:40px;
+}
+
+.desc{
+	text-align: center;
+	position: relative;
+	color: rgb(219, 237, 252);
+	font-size: medium;
+	font-style: oblique;
+	font-style: italic;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.github{
+	height: 50px;
+	width: 50px;
+	position: relative;
+	margin-left:210px;
+}
+
+.instagram{
+	height: 50px;
+	width: 50px;
+	position: relative;
+	margin-left:5px;
+}
+
+.linkedin{
+	height: 50px;
+	width: 50px;
+	margin-left:5px;
+	position: relative;
+}
+
+.btn{
+	height: 50px;
+	width: 600px;
+	background-color: red;
+}
+
+.contact{
+	text-align: center;
+	position: relative;
+	color: aliceblue;
+	font-weight: bold;
+	font-size:20px;
+}
