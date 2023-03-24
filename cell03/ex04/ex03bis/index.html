@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>todo</title>
+  <link href="todo.css" rel="stylesheet" />
+</head>
+<style>
+	.container
+	{
+		height: 87vh;
+		width: 75vh;
+		margin: auto;
+		border: 5px solid black;
+		border-style: dotted;
+		display: flex;
+      	flex-direction: column;
+		background-image: url(/nfs/homes/mneri/Downloads/unclesam.jpg);
+		background-size: 115%;
+	}
+.button-50 {
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 5px 10px 0;
+  overflow: visible;
+  padding: 12px 40px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 50px;
+  position: relative;
+  left: 43%;
+}
+
+.button-50:focus {
+  text-decoration: none;
+}
+
+.button-50:hover {
+  text-decoration: none;
+}
+
+.button-50:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.button-50:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+
+
+</style>
+<body style="background-color: rgb(53, 54, 54);">
+	<div id = "ft_list" class="container">
+		<h1 style="text-align: center;"">To Do List</h1>
+		<button id="button" class="button-50">New</button>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+	
+$(document).ready(function() {
+
+  function loadCookie() {
+    var cookie = document.cookie;
+    var cookieArray = cookie.split(";");
+    for (var i = 0; i < cookieArray.length; i++) {
+      var cookieName = cookieArray[i].split("=")[0];
+      var cookieValue = cookieArray[i].split("=")[1];
+      if (cookieName.includes("todo")) {
+        const newToDo = document.createElement("div");
+        $(newToDo).text(cookieValue);
+        $(newToDo).css("text-align", "center");
+        $("#ft_list").append(newToDo);
+        $(newToDo).click(function() {
+          if (confirm("Are you sure you want to delete this to-do item?")) {
+            $(this).remove();
+            document.cookie = "todo" + cookieValue + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          }
+        })
+      }
+    }
+  }
+
+  $(window).on('load', loadCookie());
+
+	function setCookie(cname, cvalue, exdays)
+	{
+		const d = new Date();
+		d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+		let expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+		$("#button").click(function(){
+			var todoText = prompt("Enter new to-do item:");
+			if(todoText == null || todoText == "")
+			{return;}
+				const newToDo = document.createElement("div");
+				$(newToDo).text(todoText);
+				$(newToDo).css("text-align", "center");
+				$("#ft_list").append(newToDo);
+				setCookie("todo" + todoText, todoText, 365);
+				$(newToDo).click(function(){
+					if(confirm("Are you sure you want to delete this to-do item?"))
+					{
+						$(this).remove();
+						document.cookie = "todo" + todoText + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+					}
+				})
+		})
+	})
+</script>
+</body>
+</html>

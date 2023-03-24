@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ballooon</title>
+</head>
+<style>
+	.circle {
+		display: flex;
+	    border-radius: 50%;
+	}
+</style>
+<body>
+	<div  id= "balloon" class="circle" onclick="getBigger()" onmouseout="getSmaller()" style="height: 200px; width: 200px; background-color: red;" ></div>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#balloon").click(function(){
+			switch($("#balloon").css("background-color"))
+			{
+				case 'rgb(255, 0, 0)':
+					$("#balloon").css("background-color", "green");
+					break;
+				case 'rgb(0, 128, 0)':
+					$("#balloon").css("background-color", "blue");
+					break;
+				case 'rgb(0, 0, 255)':
+					$("#balloon").css("background-color", "red");
+					break;
+			}
+			$("#balloon").css("height", parseInt($("#balloon").css("height")) + 10 + "px");
+			$("#balloon").css("width", parseInt($("#balloon").css("width")) + 10 + "px");
+			if(parseInt($("#balloon").css("height")) > 420)
+			{
+				$("#balloon").css("height", "200px");
+				$("#balloon").css("width", "200px");
+			}
+		})
+		$("#balloon").mouseout(function(){
+			if(parseInt($("#balloon").css("height")) > 200)
+			{
+				switch($("#balloon").css("background-color"))
+				{
+					case 'rgb(255, 0, 0)':
+						$("#balloon").css("background-color", "blue");
+						break;
+					case 'rgb(0, 0, 255)':
+						$("#balloon").css("background-color", "green");
+						break;
+					case 'rgb(0, 128, 0)':
+						$("#balloon").css("background-color", "red");
+						break;
+				}
+				$("#balloon").css("height", parseInt($("#balloon").css("height")) - 5 + "px");
+				$("#balloon").css("width", parseInt($("#balloon").css("width")) - 5 + "px");
+			}
+		})
+	})
+
+	</script>
+</body>
+</html>

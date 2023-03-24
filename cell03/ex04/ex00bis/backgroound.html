@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>backgroound</title>
+  <link href="backgroound.css" rel="stylesheet" />
+</head>
+<body id >
+	<div id="background" class="contentBox">
+		<button id = "button"><p>click me</p></button>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		$("#button").click(function(){
+			var color= ["red", "blue", "green", "yellow", "pink", "purple", "orange", "black", "white"];
+			$(".contentBox").css("background-color", color[Math.floor(Math.random()*color.length)]);
+		})
+			}); 
+	</script>
+</body>
+</html>

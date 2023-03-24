@@ -8,10 +8,7 @@ function setCookie(cname, cvalue, exdays) {
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
 
-  function eraseCookie(c_name) {
-	setCookie(cookie_name,"",-1);
-  }
-
+ 
 function makeToDo(){
 	var todoText = prompt("Enter new to-do item:");
 	if (todoText == null || todoText == "") {
@@ -20,12 +17,33 @@ function makeToDo(){
 	newToDo.textContent = todoText;
 	newToDo.style.textAlign = 'center';
 	ft_list.appendChild(newToDo);
+	setCookie("todo" + todoText, todoText, 365);
 	newToDo.addEventListener('click', function(){
 		if(confirm("are you sure about deleting this to-do?")){
 			this.parentNode.removeChild(this);
-			eraseCookie(this);
+			document.cookie = "todo" + todoText + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 		}
-		setCookie("todo" + todoText, todoText, 365);
 	})
 }
 
+function loadCookie() {
+	var cookie = document.cookie;
+	var cookieArray = cookie.split(";");
+	for (var i = 0; i < cookieArray.length; i++) {
+	  var cookieName = cookieArray[i].split("=")[0];
+	  var cookieValue = cookieArray[i].split("=")[1];
+	  if (cookieName.includes("todo")) {
+		const newToDo = document.createElement("div");
+		newToDo.textContent = cookieValue;
+		newToDo.style.textAlign = "center";
+		ft_list.appendChild(newToDo);
+		newToDo.addEventListener("click", function () {
+		  if (confirm("Are you sure about deleting this to-do?")) {
+			this.parentNode.removeChild(this);
+			var cookieKey = "todo" + cookieValue;
+			document.cookie = cookieKey + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		  }
+		});
+	  }
+	}
+  }
